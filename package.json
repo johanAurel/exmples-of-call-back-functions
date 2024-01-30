@@ -19,5 +19,9 @@
   },
   "main": "index.js",
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "@inquirer/prompts": "^3.3.2",
+    "inquirer": "^8.0.0"
+  }
 }
