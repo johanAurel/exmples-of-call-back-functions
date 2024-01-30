@@ -4,7 +4,7 @@ const fetchAllCats = require("../challenges/3-fetch-all-cats");
 
 jest.setTimeout(1000);
 
-describe.only("fetchCatsByOwner()", () => {
+describe("fetchCatsByOwner()", () => {
   test("returns a promise which rejects with the 404 error when given an invalid owner", () => {
     return fetchCatsByOwner("mitch").catch((err) => {
       expect(err).toBe("404 - mitch not found");
