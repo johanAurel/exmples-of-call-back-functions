@@ -4,13 +4,13 @@ const fetchAllCats = require("../challenges/3-fetch-all-cats");
 
 jest.setTimeout(1000);
 
-describe("fetchCatsByOwner()", () => {
+describe.only("fetchCatsByOwner()", () => {
   test("returns a promise which rejects with the 404 error when given an invalid owner", () => {
     return fetchCatsByOwner("mitch").catch((err) => {
       expect(err).toBe("404 - mitch not found");
     });
   });
-  describe("returns a promise which resolves with the cats for the specified owner", () => {
+describe("returns a promise which resolves with the cats for the specified owner", () => {
     test("case: owner === vel", () => {
       return fetchCatsByOwner("vel").then((cats) => {
         expect(cats).toEqual(["Opal"]);
