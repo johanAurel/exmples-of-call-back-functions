@@ -3,20 +3,13 @@ const fetchCatsByOwner = require("./1-fetch-cats-by-owner");
 const fetchAllOwners = require("./2-fetch-all-owners");
 
 const fetchAllCats = () => {
-
-    let catArray = [];
-
-    return fetchAllOwners()
-    .then(owners)
-
-    // for (const owner of fetchAllOwners()) {
-    //     for (const cat of fetchCatsByOwner(owner)) {
-    //         if (!catArray.includes(cat)) {
-    //             catArray.push(cat);
-    //         }
-    //     }
-    // };
-    // return catArray.sort((a,b)=>a-b)
-}
+  return fetchAllOwners().then((owners) => {
+    const newArr = owners.map((owner) => fetchCatsByOwner(owner));
+    return Promise.all(newArr).then((cat) => {
+      const catArray = cat.flat(Infinity);
+      return catArray.sort();
+    });
+  });
+};
 
 module.exports = fetchAllCats;
